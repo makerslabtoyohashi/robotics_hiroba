@@ -2,9 +2,10 @@ import urllib.request
 
 
 class MyClient:
-    def __init__(self, ipaddress, port):
+    def __init__(self, ipaddress, port, clientname='noname'):
         self.ipaddress = ipaddress
         self.port = port
+        self.clientname = clientname
 
     def _create_request(self, params, page):
         url = 'http://{}:{}'.format(self.ipaddress, self.port)
