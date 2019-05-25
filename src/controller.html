@@ -8,17 +8,10 @@
 			<h1>ロボティクスひろば の しょくぶつ こうじょう</h1>
 		</header>
 		<div class="content">
-			<h2>センサー の データ を みる</h2>
-			<form action="http://192.168.24.62:1880/getdata" method="get">
-				<div class="button">
-					<button class="button1" type="submit">みる</button>
-				</div>
-			</form>
-			<br>
-			<h2>LED の てんとう/しょうとう じこく を せってい する</h2>
+			<h2>LED</h2>
 			<form action="http://192.168.24.64:1880/setled" method="get">
 				<div class="button">
-					<button class="button1" type="submit">おくる</button>
+					<button class="button1" type="submit">LED の てんとう/しょうとう じこく を せってい する</button>
 				</div>
 				<div>
 					<label for="ontime">なんじ に つける？  </label>
@@ -82,10 +75,9 @@
 				</div>
 			</form>
 			<br>
-			<h2>あか いろ LED を ON/OFF する</h2>
 			<form action="http://192.168.24.64:1880/redled" method="get">
 				<div class="button">
-					<button class="button1" type="submit">おくる</button>
+					<button class="button1" type="submit">あか いろ LED を ON/OFF する</button>
 				</div>
 				<div>
 					<label for="state">ON/OFF  </label>
@@ -97,10 +89,9 @@
 				</div>
 			</form>
 			<br>
-			<h2>みどり いろ LED を ON/OFF する</h2>
 			<form action="http://192.168.24.64:1880/greenled" method="get">
 				<div class="button">
-					<button class="button1" type="submit">おくる</button>
+					<button class="button1" type="submit">みどり いろ LED を ON/OFF する</button>
 				</div>
 				<div>
 					<label for="state">ON/OFF  </label>
@@ -112,10 +103,9 @@
 				</div>
 			</form>
 			<br>
-			<h2>あお いろ LED を ON/OFF する</h2>
 			<form action="http://192.168.24.64:1880/blueled" method="get">
 				<div class="button">
-					<button class="button1" type="submit">おくる</button>
+					<button class="button1" type="submit">あお いろ LED を ON/OFF する</button>
 				</div>
 				<div>
 					<label for="state">ON/OFF  </label>
@@ -127,31 +117,33 @@
 				</div>
 			</form>
 			<br>
-			<h2>カメラ1 で しゃしん を とる</h2>
-			<form action="http://192.168.24.65:1880/shutter" method="get">
+			<h2>カメラ1</h2>
+			<form action="http://192.168.24.63:1880/shutter1" method="get">
+				<input type="hidden" name="name" value="temporary">
 				<div class="button">
-					<button class="button1" type="submit">シャッター</button>
+					<button class="button1" type="submit">しゃしん を とる</button>
 				</div>
 			</form>
 			<br>
-			<h2>カメラ1 で とった しゃしん を みる</h2>
-			<form action="http://192.168.24.65:1880/getimg" method="get">
+			<form action="http://192.168.24.63:1880/getimg1" method="get">
+				<input type="hidden" name="name" value="temporary">
 				<div class="button">
-					<button class="button1" type="submit">みる</button>
+					<button class="button1" type="submit">しゃしん を みる</button>
 				</div>
 			</form>
 			<br>
-			<h2>カメラ2 で しゃしん を とる</h2>
-			<form action="http://192.168.24.63:1880/shutter" method="get">
+			<h2>カメラ2</h2>
+			<form action="http://192.168.24.65:1880/shutter2" method="get">
+				<input type="hidden" name="name" value="temporary">
 				<div class="button">
-					<button class="button1" type="submit">シャッター</button>
+					<button class="button1" type="submit">しゃしん を とる</button>
 				</div>
 			</form>
 			<br>
-			<h2>カメラ2 で とった しゃしん を みる</h2>
-			<form action="http://192.168.24.63:1880/getimg" method="get">
+			<form action="http://192.168.24.65:1880/getimg2" method="get">
+				<input type="hidden" name="name" value="temporary">
 				<div class="button">
-					<button class="button1" type="submit">みる</button>
+					<button class="button1" type="submit">しゃしん を みる</button>
 				</div>
 			</form>
 		</div>

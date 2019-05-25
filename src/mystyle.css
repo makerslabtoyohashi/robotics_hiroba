@@ -5,6 +5,10 @@ body {
 	margin: 100px;
 }
 
+.center{
+    text-align: center;
+}
+
 .topNavigation{
     height: 140px;
     text-align: center;
@@ -39,9 +43,9 @@ h2 {
 
 button.button1 {
   display: inline-block;
-  width: 200px;
+  width: 350px;
   height: 54px;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   line-height: 54px;
   outline: none;
@@ -76,3 +80,23 @@ button.button1:hover {
   color: #59b1eb;
 }
 
+.cp_imghover {
+	overflow: hidden;
+	width: 656px;
+	height: 492px;
+	margin: 2em auto;
+	border: 10px solid #ffffff;
+	box-shadow: 0 0 5px #cccccc;
+	cursor: pointer;
+}
+/*zoomin*/
+.cp_zoomin img {
+	width: 656px;
+	height: 492px;
+	-webkit-transition: all 1s ease;
+	transition: all 1s ease;
+}
+.cp_zoomin img:hover {
+	-webkit-transform: scale(1.5,1.5);
+	transform: scale(1.5,1.5);
+}

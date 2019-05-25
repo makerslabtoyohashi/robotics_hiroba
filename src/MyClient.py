@@ -1,4 +1,6 @@
 import urllib.request
+from urllib.request import Request, urlopen
+from urllib.error import URLError
 
 
 class MyClient:
@@ -11,14 +13,23 @@ class MyClient:
         url = 'http://{}:{}'.format(self.ipaddress, self.port)
         if len(page) > 0:
             url = url + page
-        req = urllib.request.Request('{}?{}'.format(url, urllib.parse.urlencode(params)))
+        req = Request('{}?{}'.format(url, urllib.parse.urlencode(params)))
         return req
 
     def send(self, params, page=''):
         req = self._create_request(params, page)
         body = None
-        with urllib.request.urlopen(req) as res:
-            body = res.read()
+        try:
+            with urlopen(req, timeout=10) as res:
+                body = res.read()
+        except URLError as e:
+            print('MyClient Err: {}'.format(self.clientname))
+            if hasattr(e, 'reason'):
+                print('We failed to reach a server')
+                print('Reason: ', e.reason)
+            elif hasattr(e, 'code'):
+                print('The server couldn\'t fulfill the request.')
+                print('Error code: ', e.code)
         return body
 
 
