@@ -16,7 +16,7 @@ def get_args():
     parser = argparse.ArgumentParser(description='データの図化')
     parser.add_argument('--inf', type=str, default='../data/data_sensor.json',
                         help='センサデータのjsonファイル')
-    parser.add_argument('--outf', type=str, default='../data/fig_sensor.html',
+    parser.add_argument('--outf', type=str, default='../src/interface/fig_sensor.html',
                         help='センサデータを可視化した図のhtmlファイル')
     return parser.parse_args()
 

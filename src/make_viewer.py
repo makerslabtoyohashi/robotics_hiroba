@@ -7,7 +7,7 @@ def get_args():
                         help='保存済み画像ファイル名一覧')
     parser.add_argument('--tmpf', type=str, default='../src/tmp_img_viewer.txt',
                         help='ビューアのテンプレート')
-    parser.add_argument('--outf', type=str, default='../src/img_viewer.html',
+    parser.add_argument('--outf', type=str, default='../src/interface/img_viewer.html',
                         help='画像ビューアhtmlファイル')
     return parser.parse_args()
 
