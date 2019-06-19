@@ -1,4 +1,5 @@
 import argparse
+import os
 
 
 def get_args():
@@ -8,6 +9,8 @@ def get_args():
     parser.add_argument('--tmpf', type=str, default='../src/tmp_img_viewer.txt',
                         help='ビューアのテンプレート')
     parser.add_argument('--outf', type=str, default='../src/interface/img_viewer.html',
+                        help='画像ビューアhtmlファイル')
+    parser.add_argument('--outdir', type=str, default='./photo/',
                         help='画像ビューアhtmlファイル')
     return parser.parse_args()
 
@@ -29,7 +32,7 @@ def save(filename, data):
         f.write(data)
 
 
-def make_img_viewer_html(inf, tmpf, outf):
+def make_img_viewer_html(inf, tmpf, outf, outdir):
     # 保存済み画像ファイル名一覧を読み込み
     fnames = load_lines(inf)
     # 画像ビューアhtmlファイルを生成
@@ -42,6 +45,7 @@ def make_img_viewer_html(inf, tmpf, outf):
     tmp_img += '</div>\n'
     imglist = ''
     for fname in fnames:
+        fname = outdir + os.path.basename(fname)
         title = '{}年{}月{}日{}時{}分{}秒'.format(
             fname[-19:-15], fname[-15:-13], fname[-13:-11],
             fname[-11:-9], fname[-9:-7], fname[-7:-5])
@@ -56,4 +60,4 @@ def make_img_viewer_html(inf, tmpf, outf):
 
 if __name__ == '__main__':
     args = get_args()
-    make_img_viewer_html(args.inf, args.tmpf, args.outf)
+    make_img_viewer_html(args.inf, args.tmpf, args.outf, args.outdir)

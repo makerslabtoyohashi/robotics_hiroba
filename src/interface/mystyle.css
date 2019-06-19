@@ -5,6 +5,12 @@ body {
 	margin: 100px;
 }
 
+.button_led{
+	display: inline-block;
+	/* background-color: #ccc; */
+	padding: 10px;
+}
+
 .center{
     text-align: center;
 }
@@ -45,7 +51,7 @@ button.button1 {
   display: inline-block;
   width: 350px;
   height: 54px;
-  text-align: left;
+  text-align: center;
   text-decoration: none;
   line-height: 54px;
   outline: none;

@@ -15,20 +15,21 @@ from collections import OrderedDict
 
 def get_args():
     parser = argparse.ArgumentParser(description='Mother')
-    parser.add_argument('--delay', type=int, default=15, help='second')
-    parser.add_argument('--delay_photo1', type=int, default=60, help='second')
-    parser.add_argument('--ip_sensor', type=str, default='192.168.24.62', help='IP address for Sensor raspberry pi')
-    parser.add_argument('--ip_camera1', type=str, default='192.168.24.63', help='IP address for Camera1 raspberry pi')
+    parser.add_argument('--delay', type=int, default=60, help='second')
+    parser.add_argument('--delay_photo1', type=int, default=600, help='second')
+    parser.add_argument('--ip_sensor', type=str, default='192.168.24.64', help='IP address for Sensor raspberry pi')
+    parser.add_argument('--ip_camera1', type=str, default='192.168.24.64', help='IP address for Camera1 raspberry pi')
     parser.add_argument('--ip_camera2', type=str, default='192.168.24.65', help='IP address for camera2 raspberry pi')
     parser.add_argument('--port', type=str, default='1880', help='Port for node-red of raspberry pi')
     parser.add_argument('--outf_sensor', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/data/data_sensor.json', help='Output file of sensor data')
     parser.add_argument('--outf_fig_sensor', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/src/interface/fig_sensor.html', help='Output file of figure of sensor ')
     parser.add_argument('--outf_viewer', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/src/interface/img_viewer.html', help='Output file of image viewer')
+    parser.add_argument('--outdir_viewer', type=str, default='./photo/', help='Output directory of image viewer')
     parser.add_argument('--tmp_viewer', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/src/tmp_img_viewer.txt', help='Template file of image viewer')
     parser.add_argument('--inf_takenphoto1', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/data/list_takenphoto1.txt', help='Input file of name list of taken photo file on raspberry pi')
     parser.add_argument('--inf_takenphoto2', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/data/list_takenphoto2.txt', help='Input file of name list of taken photo file on raspberry pi')
     parser.add_argument('--outf_savedphoto', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/data/list_savedphoto.txt', help='Input file of name list of saved photo file')
-    parser.add_argument('--outdir_photo', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/data/photo/', help='Output directory of photo file')
+    parser.add_argument('--outdir_photo', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/src/interface/photo/', help='Output directory of photo file')
     parser.add_argument('--outdir_photo1', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/data/photo1/', help='Output directory of photo file on raspberry pi')
     parser.add_argument('--outdir_photo2', type=str, default='/Users/reine/Project/makerslab/robotics_hiroba/data/photo2/', help='Output directory of photo file on raspberry pi')
     parser.add_argument('--debug', action='store_true')
@@ -142,11 +143,12 @@ if __name__ == '__main__':
     sensor = MyClient(args.ip_sensor, args.port, clientname='sensor')
     camera1 = MyClient(args.ip_camera1, args.port, clientname='camera1')
     camera2 = MyClient(args.ip_camera2, args.port, clientname='camera2')
-    if True:
+    while True:
+        print('\n-----')
         dt_now = datetime.datetime.now()
-        # delta = dt_now - dt_before
-        # if delta.total_seconds() > args.delay_photo1:
-        if True:
+        # if True:
+        delta = dt_now - dt_before
+        if delta.total_seconds() > args.delay_photo1:
             dt_now_str = dt_now.strftime('%Y%m%d%H%M%S')
             take_camera(camera1, dt_now_str, args.inf_takenphoto1, args.debug, outdir=args.outdir_photo1, page='/shutter1')
             take_camera(camera2, dt_now_str, args.inf_takenphoto2, args.debug, outdir=args.outdir_photo2, page='/shutter2')
@@ -165,5 +167,6 @@ if __name__ == '__main__':
                     '/getimg2')
         make_img_viewer_html(args.outf_savedphoto,
                              args.tmp_viewer,
-                             args.outf_viewer)
-        # time.sleep(args.delay)
+                             args.outf_viewer,
+                             args.outdir_viewer)
+        time.sleep(args.delay)
