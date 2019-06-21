@@ -16,7 +16,7 @@ from collections import OrderedDict
 def get_args():
     parser = argparse.ArgumentParser(description='Mother')
     parser.add_argument('--delay_sensor', type=int, default=60, help='second')
-    parser.add_argument('--delay_photo1', type=int, default=600, help='second')
+    parser.add_argument('--delay_photo1', type=int, default=120, help='second')
     parser.add_argument('--ip_sensor', type=str, default='192.168.24.64', help='IP address for Sensor raspberry pi')
     parser.add_argument('--ip_camera1', type=str, default='192.168.24.64', help='IP address for Camera1 raspberry pi')
     parser.add_argument('--ip_camera2', type=str, default='192.168.24.65', help='IP address for camera2 raspberry pi')
@@ -71,10 +71,13 @@ def save_sensor(outf, client):
             with open(outf, 'r') as f:
                 old_data_sensor = json.load(f)
         else:
+            print('\tthere are not old data')
             old_data_sensor = {}
         old_data_sensor.update(data_sensor)
         with open(outf, 'w') as f:
             json.dump(old_data_sensor, f, indent=4)
+    else:
+        print('\tdid not get data')
 
 
 def save_camera(inf, outf, outdir, client, page='getimg'):
@@ -99,17 +102,19 @@ def save_camera(inf, outf, outdir, client, page='getimg'):
         for photoname in photonames:
             img = client.send({'name': photoname}, page)
             if img is not None:
+                print('\tgot {}'.format(photoname))
                 filename = '{}photo_{}_{}.jpeg'.format(outdir, client.clientname, photoname)
                 with open(filename, 'wb') as f:  # 画像を保存
                     f.write(img)
                 with open(outf, 'a') as f:  # 保存済み画像ファイル名を追記
                     f.write(filename + '\n')
             else:
+                print('\tcould not get {}'.format(photoname))
                 flag_rm = False
         if flag_rm:
             os.remove(inf)
     else:
-        print('takenphoto does not exist')
+        print('\ttakenphoto does not exist')
 
 
 def take_camera(client, photoname, outf, debug, outdir='', page='/shutter'):
@@ -127,7 +132,7 @@ def take_camera(client, photoname, outf, debug, outdir='', page='/shutter'):
     page : str
         接続先ページ
     """
-    print('take_camera')
+    print('take_camera {}'.format(photoname))
     client.send({'name': photoname}, page)
     if debug:
         filename = '{}photo_{}.jpeg'.format(outdir, photoname)

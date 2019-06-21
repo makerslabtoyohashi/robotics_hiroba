@@ -23,13 +23,13 @@ class MyClient:
             with urlopen(req, timeout=10) as res:
                 body = res.read()
         except URLError as e:
-            print('MyClient Err: {}'.format(self.clientname))
+            print('\tMyClient Err: {}'.format(self.clientname))
             if hasattr(e, 'reason'):
-                print('We failed to reach a server')
-                print('Reason: ', e.reason)
+                print('\tWe failed to reach a server')
+                print('\tReason: ', e.reason)
             elif hasattr(e, 'code'):
-                print('The server couldn\'t fulfill the request.')
-                print('Error code: ', e.code)
+                print('\tThe server couldn\'t fulfill the request.')
+                print('\tError code: ', e.code)
         return body
 
 
