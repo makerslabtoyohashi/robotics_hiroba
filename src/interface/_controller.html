@@ -1,0 +1,161 @@
+<HTML>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>ロボティクス広場の植物工場</title>
+		<link rel="stylesheet" type="text/css" href="mystyle.css">
+	</head>
+	<body>
+		<header class="topNavigation">
+			<h1>ロボティクスひろば の しょくぶつ こうじょう</h1>
+		</header>
+		<div class="content">
+			<h2>LED</h2>
+			<form action="http://192.168.24.64:1880/setled" method="get">
+				<div class="button">
+					<button class="button1" type="submit">LED の てんとう/しょうとう じこく を せってい する</button>
+				</div>
+				<div>
+					<label for="ontime">なんじ に つける？  </label>
+					<select name="ontime">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+					</select>時
+					<!-- <input name="ontime" id="ontime" value="8">  -->
+				</div>
+				<div>
+					<label for="offtime">なんじ に けす？  </label>
+					<select name="offtime">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+					</select>時
+					<!-- <input name="offtime" id="offtime" value="20"> -->
+				</div>
+			</form>
+			<br>
+			<font color='red'>あか いろ LED</font><br>
+			<div class='button_led'>
+				<form action="http://192.168.24.64:1880/redled" method="get">
+					<input type="hidden" name="state" value="1">
+					<div class="button">
+						<button class="button1" type="submit">ON</button>
+					</div>
+				</form>
+			</div>
+			<div class='button_led'>
+				<form action="http://192.168.24.64:1880/redled" method="get">
+					<input type="hidden" name="state" value="0">
+					<div class="button">
+						<button class="button1" type="submit">OFF</button>
+					</div>
+				</form>
+			</div>
+			<br>
+			<font color='green'>みどり いろ LED</font><br>
+			<div class='button_led'>
+				<form action="http://192.168.24.64:1880/greenled" method="get">
+					<input type="hidden" name="state" value="1">
+					<div class="button">
+						<button class="button1" type="submit">ON</button>
+					</div>
+				</form>
+			</div>
+			<div class='button_led'>
+				<form action="http://192.168.24.64:1880/greenled" method="get">
+					<input type="hidden" name="state" value="0">
+					<div class="button">
+						<button class="button1" type="submit">OFF</button>
+					</div>
+				</form>
+			</div>
+			<br>
+			<form action="http://192.168.24.64:1880/blueled" method="get">
+				<div class="button">
+					<button class="button1" type="submit">あお いろ LED を ON/OFF する</button>
+				</div>
+				<div>
+					<label for="state">ON/OFF  </label>
+					<select name="state">
+						<option value="0">OFF</option>
+						<option value="1">ON</option>
+					</select>
+					<!-- <input name="ontime" id="ontime" value="8">  -->
+				</div>
+			</form>
+			<br>
+			<h2>カメラ1</h2>
+			<form action="http://192.168.24.64:1880/shutter1" method="get">
+				<input type="hidden" name="name" value="temporary">
+				<div class="button">
+					<button class="button1" type="submit">しゃしん を とる</button>
+				</div>
+			</form>
+			<br>
+			<form action="http://192.168.24.64:1880/getimg1_tempo" method="get">
+				<input type="hidden" name="name" value="temporary">
+				<div class="button">
+					<button class="button1" type="submit">しゃしん を みる</button>
+				</div>
+			</form>
+			<br>
+			<h2>カメラ2</h2>
+			<form action="http://192.168.24.65:1880/shutter2" method="get">
+				<input type="hidden" name="name" value="temporary">
+				<div class="button">
+					<button class="button1" type="submit">しゃしん を とる</button>
+				</div>
+			</form>
+			<br>
+			<form action="http://192.168.24.65:1880/getimg2_tempo" method="get">
+				<input type="hidden" name="name" value="temporary">
+				<div class="button">
+					<button class="button1" type="submit">しゃしん を みる</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</HTML>
+
