@@ -173,9 +173,5 @@ h2.s1 {
 }
 
 button.s1 {
-	text-align:center;
-	width:140px; height:30px;
-	margin: 5px auto;
-	font-size: 22px;
+	margin: 5px 70px 5px 70px;
 }
-
