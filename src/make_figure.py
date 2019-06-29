@@ -44,8 +44,13 @@ def load(filename):
         data = [data[x] for x in dtime]
         header = list(data[0].keys())
         data = [[float(d[h]) for d in data] for h in header]
+        # YYYY/MM/DD/hh/mm/ss形式→MM/DD hh:mm形式
+        dtime = ['{0[0]}/{0[1]} {0[2]}:{0[3]}'.format(x.split('/')[1:-1]) for x in dtime]
         data = np.array(data)
         dtime = np.array(dtime)
+        # データ点数の制限
+        data = data[:, -20:]
+        dtime = dtime[-20:]
     return data, dtime, header
 
 
@@ -63,7 +68,7 @@ def make_lineplot(data, dtime, header):
                          mode='lines+markers',
                          name=h) for y, h in zip(data, header)]
     layout = go.Layout(title='センサデータ',
-                       xaxis=dict(title='計測時間(年/月/日/時/分/秒)'),
+                       xaxis=dict(title='計測時間(月/日 時:分)'),
                        yaxis=dict(title='計測値'),
                        showlegend=True)
     fig = dict(data=traces, layout=layout)

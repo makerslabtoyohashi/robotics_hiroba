@@ -37,12 +37,10 @@ def make_img_viewer_html(inf, tmpf, outf, outdir):
     fnames = load_lines(inf)
     # 画像ビューアhtmlファイルを生成
     tmp = load(tmpf)
-    tmp_img = '<div class="center">\n'
+    tmp_img = '<div class="viewer_photo">\n'
     tmp_img += '<p>{title}</p>\n'
+    tmp_img += '<img src="{img_src}" alt="{img_alt}" title="{img_title} width=400 height=400">\n'
     tmp_img += '</div>'
-    tmp_img += '<div class="cp_imghover cp_zoomin">\n'
-    tmp_img += '<img src="{img_src}" alt="{img_alt}" title="{img_title}">\n'
-    tmp_img += '</div>\n'
     imglist = ''
     for fname in fnames:
         fname = outdir + os.path.basename(fname)

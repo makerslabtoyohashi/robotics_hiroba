@@ -16,7 +16,7 @@ from collections import OrderedDict
 def get_args():
     parser = argparse.ArgumentParser(description='Mother')
     parser.add_argument('--delay_sensor', type=int, default=60, help='second')
-    parser.add_argument('--delay_photo1', type=int, default=120, help='second')
+    parser.add_argument('--delay_photo1', type=int, default=43200, help='second')
     parser.add_argument('--ip_sensor', type=str, default='192.168.24.64', help='IP address for Sensor raspberry pi')
     parser.add_argument('--ip_camera1', type=str, default='192.168.24.64', help='IP address for Camera1 raspberry pi')
     parser.add_argument('--ip_camera2', type=str, default='192.168.24.65', help='IP address for camera2 raspberry pi')
